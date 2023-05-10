@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:layout_margin="5dp"
+    >
+    <ImageView
+        android:id="@+id/albumDetailsRecyclerViewSongImageView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:src="@drawable/ic_launcher_background"
+        />
+    <LinearLayout
+        android:id="@+id/clickedForSinging"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:id="@+id/albumDetailsRecyclerViewSongName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            android:text="Şarkı Adı"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/albumDetailsRecyclerViewRelease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Süresi" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/likeButtonForSaving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableTop="@drawable/heart_icon_blank" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

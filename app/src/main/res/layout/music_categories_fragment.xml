@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="20"
+    >
+
+    <TextView
+        android:id="@+id/MusicCategoriesHeaderTxt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="MÜZİK KATEGORİLERİ SAYFASI"
+        android:textSize="20sp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMusicCategories"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="18"
+        app:spanCount="2"
+        />
+
+    <LinearLayout
+        android:id="@+id/likeAndMusicLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/musicButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:contentDescription="@string/music_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableBottom="@drawable/music_icon"
+            tools:ignore="NestedWeights" />
+
+        <Button
+            android:id="@+id/likeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:contentDescription="@string/like_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:drawableBottom="@drawable/heart_icon_blank"
+             />
+
+    </LinearLayout>
+
+
+</LinearLayout>
