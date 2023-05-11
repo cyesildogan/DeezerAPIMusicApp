@@ -15,6 +15,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="MÜZİK KATEGORİLERİ SAYFASI"
+        android:textStyle="bold"
         android:textSize="20sp" />
 
 
@@ -35,24 +36,24 @@
         android:layout_weight="1"
         >
 
-        <Button
+        <ImageButton
             android:id="@+id/musicButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:contentDescription="@string/music_button"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:drawableBottom="@drawable/music_icon"
+            android:src="@drawable/music_icon"
             tools:ignore="NestedWeights" />
 
-        <Button
+        <ImageButton
             android:id="@+id/likeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:contentDescription="@string/like_button"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:drawableBottom="@drawable/heart_icon_blank"
+            android:src="@drawable/heart_icon_blank"
              />
 
     </LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/musicCategoriesFragment">
+
+    <fragment
+        android:id="@+id/musicCategoriesFragment"
+        android:name="com.example.deezerapimusicapp.view.MusicCategoriesFragment"
+        android:label="MusicCategoriesFragment" >
+        <action
+            android:id="@+id/action_musicCategoriesFragment_to_favoritesListFragment"
+            app:destination="@id/favoritesListFragment" />
+        <action
+            android:id="@+id/action_musicCategoriesFragment_to_artistListFragment"
+            app:destination="@id/artistListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesListFragment"
+        android:name="com.example.deezerapimusicapp.view.FavoritesListFragment"
+        android:label="FavoritesListFragment" >
+        <action
+            android:id="@+id/action_favoritesListFragment_to_musicCategoriesFragment"
+            app:destination="@id/musicCategoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistListFragment"
+        android:name="com.example.deezerapimusicapp.view.ArtistListFragment"
+        android:label="ArtistListFragment" >
+        <action
+            android:id="@+id/action_artistListFragment_to_artistDetailFragment"
+            app:destination="@id/artistDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistDetailFragment"
+        android:name="com.example.deezerapimusicapp.view.ArtistDetailFragment"
+        android:label="ArtistDetailFragment" >
+        <action
+            android:id="@+id/action_artistDetailFragment_to_albumDetailsFragment"
+            app:destination="@id/albumDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailsFragment"
+        android:name="com.example.deezerapimusicapp.view.AlbumDetailsFragment"
+        android:label="AlbumDetailsFragment" />
+</navigation>
