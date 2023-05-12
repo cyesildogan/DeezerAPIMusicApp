@@ -26,6 +26,8 @@
         android:layout_gravity="center"
         android:layout_weight="18"
         app:spanCount="2"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/categories_recycler_row"
         />
 
     <LinearLayout

@@ -30,6 +30,10 @@
         <action
             android:id="@+id/action_artistListFragment_to_artistDetailFragment"
             app:destination="@id/artistDetailFragment" />
+        <argument
+            android:name="artistsListId"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/artistDetailFragment"
@@ -38,9 +42,16 @@
         <action
             android:id="@+id/action_artistDetailFragment_to_albumDetailsFragment"
             app:destination="@id/albumDetailsFragment" />
+        <argument android:name="artistDetailId"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/albumDetailsFragment"
         android:name="com.example.deezerapimusicapp.view.AlbumDetailsFragment"
-        android:label="AlbumDetailsFragment" />
+        android:label="AlbumDetailsFragment" >
+        <argument
+            android:name="albumDetailId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
