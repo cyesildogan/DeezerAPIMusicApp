@@ -38,12 +38,12 @@ class GenreListAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = CategoriesRecyclerRowBinding.bind(itemView)
         fun bind(genre: GenreData) {
-           genre.picture_big.let {
+           genre.picture_medium.let {
                binding.categoriesRecyclerCategoriesImageView.loadUrl(it)
            }
             genre.name
                 .let { binding.categoriesRecyclerCategoriesNameTextView
-                    .text = it.toString() }
+                    .text = it }
         }
     }
 

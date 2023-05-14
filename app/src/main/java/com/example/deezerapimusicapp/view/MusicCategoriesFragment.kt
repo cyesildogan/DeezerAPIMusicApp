@@ -27,7 +27,7 @@ class MusicCategoriesFragment: Fragment(R.layout.music_categories_fragment) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         updateGenreState()
         fragmentBinding = MusicCategoriesFragmentBinding.inflate(inflater)
         return fragmentBinding.root
@@ -65,13 +65,10 @@ class MusicCategoriesFragment: Fragment(R.layout.music_categories_fragment) {
     fun setRecyclerView(genreList: List<GenreData>){
         fragmentBinding.recyclerViewMusicCategories.adapter = GenreListAdapter(genreList,GenreListAdapter.OnClickListener{
                 findNavController().navigate(MusicCategoriesFragmentDirections
-                    .actionMusicCategoriesFragmentToArtistListFragment(it.id))
+                    .actionMusicCategoriesFragmentToArtistListFragment(getCategoriesName = it.name, artistsListId = it.id))
             })
 
 
     }
-    override fun onDestroyView() {
 
-        super.onDestroyView()
-    }
 }

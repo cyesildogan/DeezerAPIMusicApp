@@ -36,9 +36,9 @@ class ArtistListAdapter(
         private val binding = AritstsListRecyclerRowBinding.bind(itemView)
         fun bind(artist: ArtistData){
             artist.name.let {
-                binding.artistListRecyclerArtistsNameText.text = it.toString()
+                binding.artistListRecyclerArtistsNameText.text = it
             }
-            artist.picture_big.let {
+            artist.picture_medium.let {
                 binding.artistListRecyclerArtistImageView.loadUrl(it)
             }
         }

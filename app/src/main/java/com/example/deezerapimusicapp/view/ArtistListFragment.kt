@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 class ArtistListFragment : Fragment(R.layout.artists_list_fragment) {
 
     private var getCategoriesId : String= ""
+    private var getCategoriesName : String = ""
     private val args : ArtistListFragmentArgs by navArgs()
     private lateinit var fragmentBinding : ArtistsListFragmentBinding
     private val artistListViewModel : ArtistListViewModel by viewModels()
@@ -30,12 +31,17 @@ class ArtistListFragment : Fragment(R.layout.artists_list_fragment) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        args.artistsListId?.let {
+    ): View {
+        args.artistsListId.let {
             getCategoriesId = it.toString()
         }
+        args.getCategoriesName.let {
+            getCategoriesName = it
+        }
         updateArtistState(getCategoriesId)
+
         fragmentBinding = ArtistsListFragmentBinding.inflate(inflater)
+        fragmentBinding.categoriesNameTextView.text = getCategoriesName
         return fragmentBinding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +70,11 @@ class ArtistListFragment : Fragment(R.layout.artists_list_fragment) {
     fun setRecyclerView(artistList: List<ArtistData>){
         fragmentBinding.recyclerViewArtistsList.adapter = ArtistListAdapter(artistList,
            ArtistListAdapter.OnClickListener{
-            findNavController().navigate(ArtistListFragmentDirections.actionArtistListFragmentToArtistDetailFragment())
+            findNavController().navigate(ArtistListFragmentDirections.actionArtistListFragmentToArtistDetailFragment(
+                artistDetailId = it.picture_big,
+                getArtistName = it.name,
+                getArtistId = it.id))
+
         })
 
     }

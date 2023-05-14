@@ -34,6 +34,9 @@
             android:name="artistsListId"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="getCategoriesName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/artistDetailFragment"
@@ -43,7 +46,12 @@
             android:id="@+id/action_artistDetailFragment_to_albumDetailsFragment"
             app:destination="@id/albumDetailsFragment" />
         <argument android:name="artistDetailId"
-            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="getArtistName"
+            app:argType="string" />
+        <argument
+            android:name="getArtistId"
             app:argType="integer" />
     </fragment>
     <fragment
@@ -53,5 +61,8 @@
         <argument
             android:name="albumDetailId"
             app:argType="integer" />
+        <argument
+            android:name="albumName"
+            app:argType="string" />
     </fragment>
 </navigation>
