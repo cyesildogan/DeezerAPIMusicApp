@@ -13,14 +13,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.deezerapimusicapp.R
 import com.example.deezerapimusicapp.adapter.AlbumDetailAdapter
 import com.example.deezerapimusicapp.databinding.AlbumDetailsFragmentBinding
-import com.example.deezerapimusicapp.model.albumDetail.Album
-import com.example.deezerapimusicapp.model.albumDetail.AlbumDetailsModel
 import com.example.deezerapimusicapp.model.albumDetail.DataX
-import com.example.deezerapimusicapp.model.albumDetail.Tracks
-import com.example.deezerapimusicapp.model.albums.AlbumsModel
 import com.example.deezerapimusicapp.viewmodel.AlbumDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.time.ExperimentalTime
 
@@ -63,7 +58,7 @@ class AlbumDetailsFragment : Fragment(R.layout.album_details_fragment) {
 
                 }else if (albumDetailViewState.isSuccess){
                     fragmentBinding.recyclerViewAlbumDetails.visibility = View.VISIBLE
-                    setRecyclerView(albumDetailViewState.albumDetailList!!.data,albumDetailViewState.albumReleaseDetail!!)
+                    setRecyclerView(albumDetailViewState.albumDetailList!!.data)
                 }else{
                     fragmentBinding.recyclerViewAlbumDetails.visibility = View.GONE
                     Toast.makeText(requireContext(),"No no", Toast.LENGTH_LONG).show()
@@ -73,8 +68,8 @@ class AlbumDetailsFragment : Fragment(R.layout.album_details_fragment) {
         }
     }
     @OptIn(ExperimentalTime::class)
-    fun setRecyclerView(albumDetail: List<DataX>, duration : List<DataX>){
-        fragmentBinding.recyclerViewAlbumDetails.adapter = AlbumDetailAdapter(albumDetail,duration,
+    fun setRecyclerView(albumDetail: List<DataX>){
+        fragmentBinding.recyclerViewAlbumDetails.adapter = AlbumDetailAdapter(albumDetail,
             AlbumDetailAdapter.OnClickListener{
                 findNavController()
             })
