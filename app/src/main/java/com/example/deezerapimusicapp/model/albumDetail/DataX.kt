@@ -1,9 +1,8 @@
-package com.example.deezerapimusicapp.model.album
+package com.example.deezerapimusicapp.model.albumDetail
 
-data class Data(
+data class DataX(
     val album: Album,
-    val artist: Artist,
-    val contributors: List<Contributor>,
+    val artist: ArtistX,
     val duration: Int,
     val explicit_content_cover: Int,
     val explicit_content_lyrics: Int,

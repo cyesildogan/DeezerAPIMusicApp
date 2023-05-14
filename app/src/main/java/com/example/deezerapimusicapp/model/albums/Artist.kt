@@ -1,4 +1,4 @@
-package com.example.deezerapimusicapp.model.album
+package com.example.deezerapimusicapp.model.albums
 
 data class Artist(
     val id: Int,

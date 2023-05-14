@@ -1,4 +1,4 @@
-package com.example.deezerapimusicapp.model.album
+package com.example.deezerapimusicapp.model.albumDetail
 
 data class Album(
     val cover: String,
