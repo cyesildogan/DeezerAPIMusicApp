@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_weight="20"
+    android:background="#1ED761"
+    android:orientation="vertical"
+
     >
 
     <TextView
@@ -13,50 +15,47 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#1ED761"
         android:gravity="center"
         android:text="MÜZİK KATEGORİLERİ SAYFASI"
-        android:textStyle="bold"
-        android:textSize="20sp" />
-
-
+        android:textSize="20sp"
+        android:textStyle="bold" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMusicCategories"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
+        android:layout_margin="20dp"
         android:layout_weight="18"
-        app:spanCount="2"
+        android:background="#1ED761"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/categories_recycler_row"
-        />
-
+        app:spanCount="2"
+        tools:listitem="@layout/categories_recycler_row" />
     <LinearLayout
         android:id="@+id/likeAndMusicLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
         android:layout_weight="1"
-        >
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/musicButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:contentDescription="@string/music_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:src="@drawable/music_icon"
             tools:ignore="NestedWeights" />
 
         <ImageButton
             android:id="@+id/likeButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:contentDescription="@string/like_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:src="@drawable/heart_icon_blank"
-             />
+            android:src="@drawable/heart_icon_blank" />
 
     </LinearLayout>
 
