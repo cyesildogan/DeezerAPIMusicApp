@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#1ED761"
     android:orientation="vertical">
-
     <TextView
         android:id="@+id/artistDetailArtistNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Sanatçı Adı"
         android:textSize="20sp"
-        android:gravity="center" />
-
+        app:layout_constraintTop_toTopOf="parent" />
     <ImageView
         android:id="@+id/artistDetailArtistImageView"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_launcher_background" />
-
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toBottomOf="@id/artistDetailArtistNameTextView" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewArtistDetail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/artist_details_recycler_row"
+        android:layout_height="0dp"
+        android:background="#1ED761"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
-
-
-</LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/artistDetailArtistImageView"
+        tools:listitem="@layout/artist_details_recycler_row" />
+</androidx.constraintlayout.widget.ConstraintLayout>
