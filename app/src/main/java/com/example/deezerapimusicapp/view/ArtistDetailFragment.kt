@@ -21,19 +21,17 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ArtistDetailFragment: Fragment(R.layout.artist_details_fragment) {
+class ArtistDetailFragment : Fragment(R.layout.artist_details_fragment) {
 
-    private var getArtistPic : String = ""
-    private var getArtistName : String = ""
-    private var getArtistId : String = ""
-    private val args : ArtistDetailFragmentArgs by navArgs()
-    private lateinit var fragmentBinding : ArtistDetailsFragmentBinding
-    private val artistDetailViewModel : ArtistDetailViewModel by viewModels()
+    private var getArtistPic: String = ""
+    private var getArtistName: String = ""
+    private var getArtistId: String = ""
+    private val args: ArtistDetailFragmentArgs by navArgs()
+    private lateinit var fragmentBinding: ArtistDetailsFragmentBinding
+    private val artistDetailViewModel: ArtistDetailViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         args.artistDetailId.let {
             getArtistPic = it
@@ -54,34 +52,34 @@ class ArtistDetailFragment: Fragment(R.layout.artist_details_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
     }
 
-    private fun updateArtistDetailState(getArtistId : String){
+    private fun updateArtistDetailState(getArtistId: String) {
         viewLifecycleOwner.lifecycleScope.launch {
             artistDetailViewModel.getArtistDetail(getArtistId)
-            artistDetailViewModel.albumState.collect{ albumState->
-                if (albumState.isLoading){
-                    Toast.makeText(requireContext(),"Yükleniyor",Toast.LENGTH_LONG).show()
-                }else if(albumState.isSuccess){
+            artistDetailViewModel.albumState.collect { albumState ->
+                if (albumState.isLoading) {
+                    Toast.makeText(requireContext(), "Yükleniyor", Toast.LENGTH_LONG).show()
+                } else if (albumState.isSuccess) {
                     fragmentBinding.recyclerViewArtistDetail.visibility = View.VISIBLE
                     setRecyclerView(albumState.albumList!!.data)
-                }else{
-                    fragmentBinding.recyclerViewArtistDetail.visibility=View.VISIBLE
-                    Toast.makeText(requireContext(),"No no", Toast.LENGTH_LONG).show()
+                } else {
+                    fragmentBinding.recyclerViewArtistDetail.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "No no", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    fun setRecyclerView(albumList: List<Data>){
-        fragmentBinding.recyclerViewArtistDetail.adapter = ArtistDetailAdapter(albumList,
-            ArtistDetailAdapter.OnClickListener{
-                findNavController().navigate(ArtistDetailFragmentDirections.actionArtistDetailFragmentToAlbumDetailsFragment(it.album.id,it.album.title))
+    fun setRecyclerView(albumList: List<Data>) {
+        fragmentBinding.recyclerViewArtistDetail.adapter =
+            ArtistDetailAdapter(albumList, ArtistDetailAdapter.OnClickListener {
+                findNavController().navigate(
+                    ArtistDetailFragmentDirections.actionArtistDetailFragmentToAlbumDetailsFragment(
+                        it.album.id, it.album.title
+                    )
+                )
             })
-
     }
-
-    }
+}
 

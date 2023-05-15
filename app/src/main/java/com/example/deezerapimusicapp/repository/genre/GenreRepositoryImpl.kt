@@ -11,14 +11,9 @@ import javax.inject.Inject
 class GenreRepositoryImpl @Inject constructor(
     private val retrofitAPI: RetrofitAPI
 ) : BaseRepository(), GenreRepository {
-
     override suspend fun getGenre(): Flow<Resource<GenreModel>> {
         return getResult {
             retrofitAPI.getGenreList()
         }
-
-
     }
-
-
 }

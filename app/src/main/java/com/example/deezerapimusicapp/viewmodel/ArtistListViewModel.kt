@@ -16,25 +16,18 @@ class ArtistListViewModel @Inject constructor(
     private val repository: ArtistRepository,
     application: Application,
 
-) : BaseViewModel(application) {
-
+    ) : BaseViewModel(application) {
 
     private val _artistState = MutableStateFlow(ArtistViewState())
-
     val artistState: StateFlow<ArtistViewState> = _artistState.asStateFlow()
-
-
     suspend fun getArtists(getCategoriesId: String) {
         repository.getArtists(getCategoriesId).collect { result ->
             when (result) {
                 is Resource.Success -> {
-
                     _artistState.value = result.data?.let {
                         ArtistViewState(isSuccess = true, isLoading = false, artistList = it, "")
                     }!!
-
                 }
-
                 is Resource.Loading -> {
                     _artistState.update {
                         it.copy(
@@ -42,7 +35,6 @@ class ArtistListViewModel @Inject constructor(
                         )
                     }
                 }
-
                 is Resource.Error -> {
                     _artistState.update {
                         it.copy(
@@ -52,8 +44,6 @@ class ArtistListViewModel @Inject constructor(
                 }
             }
         }
-
-
     }
 }
 

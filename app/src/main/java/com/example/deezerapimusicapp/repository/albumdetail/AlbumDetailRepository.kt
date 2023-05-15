@@ -6,7 +6,6 @@ import com.example.deezerapimusicapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface AlbumDetailRepository {
-
-    suspend fun getArtists(getId : String) : Flow<Resource<AlbumDetailsModel>>
+    suspend fun getArtists(getId: String): Flow<Resource<AlbumDetailsModel>>
 
 }

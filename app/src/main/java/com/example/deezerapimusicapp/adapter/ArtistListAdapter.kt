@@ -12,8 +12,7 @@ import com.example.deezerapimusicapp.model.artist.ArtistData
 import com.example.deezerapimusicapp.util.loadUrl
 
 class ArtistListAdapter(
-    private val artistList: List<ArtistData>,
-    private val onClickListener: OnClickListener
+    private val artistList: List<ArtistData>, private val onClickListener: OnClickListener
 ) : ListAdapter<ArtistData, ArtistListAdapter.ViewHolder>(DiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -34,7 +33,7 @@ class ArtistListAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = AritstsListRecyclerRowBinding.bind(itemView)
-        fun bind(artist: ArtistData){
+        fun bind(artist: ArtistData) {
             artist.name.let {
                 binding.artistListRecyclerArtistsNameText.text = it
             }

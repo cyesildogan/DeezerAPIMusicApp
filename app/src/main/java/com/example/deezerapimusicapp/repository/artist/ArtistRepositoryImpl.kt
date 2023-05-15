@@ -9,12 +9,10 @@ import javax.inject.Inject
 
 class ArtistRepositoryImpl @Inject constructor(
     private val retrofitAPI: RetrofitAPI
-) : BaseRepository() , ArtistRepository {
+) : BaseRepository(), ArtistRepository {
     override suspend fun getArtists(getId: String): Flow<Resource<ArtistsModel>> {
         return getResult {
             retrofitAPI.getArtistList(getId)
         }
     }
-
-
 }

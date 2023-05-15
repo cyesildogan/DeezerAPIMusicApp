@@ -7,8 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface AlbumRepository {
 
-
-
-    suspend fun getAlbums(getArtistId : String) : Flow<Resource<AlbumsModel>>
+    suspend fun getAlbums(getArtistId: String): Flow<Resource<AlbumsModel>>
 
 }

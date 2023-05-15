@@ -17,64 +17,23 @@ import javax.inject.Inject
 @HiltViewModel
 class ArtistDetailViewModel @Inject constructor(
     private val repository: AlbumRepository,
-    private val repositoryRelease : AlbumDetailRepository,
+    private val repositoryRelease: AlbumDetailRepository,
     application: Application
-) : BaseViewModel(application){
+) : BaseViewModel(application) {
 
     private val _albumState = MutableStateFlow(AlbumsViewState())
-    val albumState : StateFlow<AlbumsViewState> = _albumState.asStateFlow()
-
-    private val _albumDetailState = MutableStateFlow(AlbumDetailViewState())
-    val albumDetailState : StateFlow<AlbumDetailViewState> = _albumDetailState.asStateFlow()
-
-   /*
-    suspend fun getAlbumRelease(getAlbumId : String){
-    repositoryRelease.getArtists(getAlbumId).collect{result->
-            when(result){
+    val albumState: StateFlow<AlbumsViewState> = _albumState.asStateFlow()
+    suspend fun getArtistDetail(getArtistId: String) {
+        repository.getAlbums(getArtistId).collect { result ->
+            when (result) {
                 is Resource.Success -> {
-                    _albumDetailState.value = result.data?.let {
-                        AlbumDetailViewState(isSuccess = true,
-                            isLoading = false,
-                            albumDetailList = it.tracks,
-                            albumReleaseDetail =it,
-                            error = "")
-                    }!!
-                }is Resource.Loading -> {
-                _albumDetailState.update {
-                    it.copy(
-                        isLoading = true
-                    )
-                }
-            }
-               is Resource.Error -> {
-                    _albumDetailState.update {
-                        it.copy(
-                            error = "Error"
-                        )
-                    }
-                }
-            }
-        }
-    }
-    */
-
-
-
-
-
-    suspend fun getArtistDetail(getArtistId : String){
-        repository.getAlbums(getArtistId).collect {result->
-            when(result){
-                is Resource.Success ->{
                     _albumState.value = result.data?.let {
-                        AlbumsViewState(isSuccess = true,
-                            isLoading = false,
-                            albumList = it,
-                            error = "")
+                        AlbumsViewState(
+                            isSuccess = true, isLoading = false, albumList = it, error = ""
+                        )
                     }!!
                 }
-
-                is Resource.Loading ->{
+                is Resource.Loading -> {
                     _albumState.update {
                         it.copy(
                             isLoading = true
@@ -89,8 +48,6 @@ class ArtistDetailViewModel @Inject constructor(
                     }
                 }
             }
-
         }
     }
-
 }

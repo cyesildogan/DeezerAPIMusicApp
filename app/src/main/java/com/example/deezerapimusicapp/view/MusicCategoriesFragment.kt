@@ -18,15 +18,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MusicCategoriesFragment: Fragment(R.layout.music_categories_fragment) {
+class MusicCategoriesFragment : Fragment(R.layout.music_categories_fragment) {
 
-    private lateinit var fragmentBinding : MusicCategoriesFragmentBinding
-    private val musicViewModel : MusicCategoriesViewModel by viewModels()
-
+    private lateinit var fragmentBinding: MusicCategoriesFragmentBinding
+    private val musicViewModel: MusicCategoriesViewModel by viewModels()
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         updateGenreState()
         fragmentBinding = MusicCategoriesFragmentBinding.inflate(inflater)
@@ -34,8 +31,6 @@ class MusicCategoriesFragment: Fragment(R.layout.music_categories_fragment) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         val binding = MusicCategoriesFragmentBinding.bind(view)
         fragmentBinding = binding
 
@@ -44,31 +39,31 @@ class MusicCategoriesFragment: Fragment(R.layout.music_categories_fragment) {
             findNavController().navigate(MusicCategoriesFragmentDirections.actionMusicCategoriesFragmentToFavoritesListFragment())
         }
     }
-
-   private fun updateGenreState(){
+    private fun updateGenreState() {
         viewLifecycleOwner.lifecycleScope.launch {
             musicViewModel.getGenre()
-            musicViewModel.genreState.collect{ genreState->
-                if (genreState.isLoading){
+            musicViewModel.genreState.collect { genreState ->
+                if (genreState.isLoading) {
 
-                }else if(genreState.isSuccess){
-                    fragmentBinding.recyclerViewMusicCategories.visibility=View.VISIBLE
+                } else if (genreState.isSuccess) {
+                    fragmentBinding.recyclerViewMusicCategories.visibility = View.VISIBLE
                     setRecyclerView(genreState.genreList!!.data)
-                }else{
-                    fragmentBinding.recyclerViewMusicCategories.visibility=View.VISIBLE
-                    Toast.makeText(requireContext(),"No no",Toast.LENGTH_LONG).show()
+                } else {
+                    fragmentBinding.recyclerViewMusicCategories.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "No no", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    fun setRecyclerView(genreList: List<GenreData>){
-        fragmentBinding.recyclerViewMusicCategories.adapter = GenreListAdapter(genreList,GenreListAdapter.OnClickListener{
-                findNavController().navigate(MusicCategoriesFragmentDirections
-                    .actionMusicCategoriesFragmentToArtistListFragment(getCategoriesName = it.name, artistsListId = it.id))
+    fun setRecyclerView(genreList: List<GenreData>) {
+        fragmentBinding.recyclerViewMusicCategories.adapter =
+            GenreListAdapter(genreList, GenreListAdapter.OnClickListener {
+                findNavController().navigate(
+                    MusicCategoriesFragmentDirections.actionMusicCategoriesFragmentToArtistListFragment(
+                        getCategoriesName = it.name, artistsListId = it.id
+                    )
+                )
             })
-
-
     }
-
 }

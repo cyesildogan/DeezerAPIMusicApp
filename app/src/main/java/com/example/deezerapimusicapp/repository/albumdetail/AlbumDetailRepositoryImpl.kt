@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 class AlbumDetailRepositoryImpl(
     private val retrofitAPI: RetrofitAPI
-): BaseRepository(),AlbumDetailRepository {
+) : BaseRepository(), AlbumDetailRepository {
     override suspend fun getArtists(getId: String): Flow<Resource<AlbumDetailsModel>> {
         return getResult {
             retrofitAPI.getAlbumDetail(getId)

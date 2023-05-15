@@ -21,17 +21,13 @@ import kotlin.time.ExperimentalTime
 
 @AndroidEntryPoint
 class AlbumDetailsFragment : Fragment(R.layout.album_details_fragment) {
-
-    private var getAlbumId : String = ""
-    private var getAlbumName : String = ""
-    private val args : AlbumDetailsFragmentArgs by navArgs()
-    private lateinit var fragmentBinding : AlbumDetailsFragmentBinding
-    private val albumDetailsViewModel : AlbumDetailsViewModel by viewModels()
-
+    private var getAlbumId: String = ""
+    private var getAlbumName: String = ""
+    private val args: AlbumDetailsFragmentArgs by navArgs()
+    private lateinit var fragmentBinding: AlbumDetailsFragmentBinding
+    private val albumDetailsViewModel: AlbumDetailsViewModel by viewModels()
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         args.albumDetailId.let {
             getAlbumId = it.toString()
@@ -49,28 +45,28 @@ class AlbumDetailsFragment : Fragment(R.layout.album_details_fragment) {
         super.onViewCreated(view, savedInstanceState)
     }
 
-
-    private fun updateAlbumDetailState(getAlbumId : String){
+    private fun updateAlbumDetailState(getAlbumId: String) {
         viewLifecycleOwner.lifecycleScope.launch {
             albumDetailsViewModel.getAlbumDetails(getAlbumId)
-            albumDetailsViewModel.albumState.collect{albumDetailViewState->
-                if (albumDetailViewState.isLoading){
+            albumDetailsViewModel.albumState.collect { albumDetailViewState ->
+                if (albumDetailViewState.isLoading) {
 
-                }else if (albumDetailViewState.isSuccess){
+                } else if (albumDetailViewState.isSuccess) {
                     fragmentBinding.recyclerViewAlbumDetails.visibility = View.VISIBLE
                     setRecyclerView(albumDetailViewState.albumDetailList!!.data)
-                }else{
+                } else {
                     fragmentBinding.recyclerViewAlbumDetails.visibility = View.GONE
-                    Toast.makeText(requireContext(),"No no", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "No no", Toast.LENGTH_LONG).show()
                 }
 
             }
         }
     }
+
     @OptIn(ExperimentalTime::class)
-    fun setRecyclerView(albumDetail: List<DataX>){
-        fragmentBinding.recyclerViewAlbumDetails.adapter = AlbumDetailAdapter(albumDetail,
-            AlbumDetailAdapter.OnClickListener{
+    fun setRecyclerView(albumDetail: List<DataX>) {
+        fragmentBinding.recyclerViewAlbumDetails.adapter =
+            AlbumDetailAdapter(albumDetail, AlbumDetailAdapter.OnClickListener {
                 findNavController()
             })
     }

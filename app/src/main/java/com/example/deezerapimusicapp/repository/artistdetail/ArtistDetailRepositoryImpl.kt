@@ -10,11 +10,10 @@ import javax.inject.Inject
 
 class ArtistDetailRepositoryImpl @Inject constructor(
     private val retrofitAPI: RetrofitAPI
-) : BaseRepository(), ArtistDetailRepository{
+) : BaseRepository(), ArtistDetailRepository {
     override suspend fun getArtistDetail(getId: String): Flow<Resource<List<ArtistDetailModel>>> {
         return getResult {
             retrofitAPI.getArtistDetail(getId)
         }
     }
-
 }

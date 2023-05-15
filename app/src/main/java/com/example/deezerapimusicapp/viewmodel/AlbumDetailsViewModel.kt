@@ -13,33 +13,31 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AlbumDetailsViewModel @Inject constructor(
-    private val repository: AlbumDetailRepository,
-    application: Application
-) : BaseViewModel(application){
+    private val repository: AlbumDetailRepository, application: Application
+) : BaseViewModel(application) {
 
     private val _albumDetailState = MutableStateFlow(AlbumDetailViewState())
-    val albumState : StateFlow<AlbumDetailViewState> = _albumDetailState.asStateFlow()
-
-
-
-
-    suspend fun getAlbumDetails(getAlbumId: String){
-        repository.getArtists(getAlbumId).collect{result->
-            when(result){
+    val albumState: StateFlow<AlbumDetailViewState> = _albumDetailState.asStateFlow()
+    suspend fun getAlbumDetails(getAlbumId: String) {
+        repository.getArtists(getAlbumId).collect { result ->
+            when (result) {
                 is Resource.Success -> {
                     _albumDetailState.value = result.data?.let {
-                        AlbumDetailViewState(isSuccess = true,
+                        AlbumDetailViewState(
+                            isSuccess = true,
                             isLoading = false,
                             albumDetailList = it.tracks,
-                            error = "")
+                            error = ""
+                        )
                     }!!
-                }is Resource.Loading -> {
-                _albumDetailState.update {
-                    it.copy(
-                        isLoading = true
-                    )
                 }
-            }
+                is Resource.Loading -> {
+                    _albumDetailState.update {
+                        it.copy(
+                            isLoading = true
+                        )
+                    }
+                }
 
                 is Resource.Error -> {
                     _albumDetailState.update {

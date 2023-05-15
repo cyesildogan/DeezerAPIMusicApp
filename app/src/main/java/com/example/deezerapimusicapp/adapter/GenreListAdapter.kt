@@ -13,8 +13,7 @@ import com.example.deezerapimusicapp.util.loadUrl
 
 
 class GenreListAdapter(
-    private val genreList: List<GenreData>,
-    private val onClickListener: OnClickListener
+    private val genreList: List<GenreData>, private val onClickListener: OnClickListener
 ) : ListAdapter<GenreData, GenreListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,12 +37,12 @@ class GenreListAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = CategoriesRecyclerRowBinding.bind(itemView)
         fun bind(genre: GenreData) {
-           genre.picture_medium.let {
-               binding.categoriesRecyclerCategoriesImageView.loadUrl(it)
-           }
-            genre.name
-                .let { binding.categoriesRecyclerCategoriesNameTextView
-                    .text = it }
+            genre.picture_medium.let {
+                binding.categoriesRecyclerCategoriesImageView.loadUrl(it)
+            }
+            genre.name.let {
+                binding.categoriesRecyclerCategoriesNameTextView.text = it
+            }
         }
     }
 

@@ -15,7 +15,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Provides
     @Singleton
     fun provideHttpClient(): OkHttpClient {
@@ -24,11 +23,9 @@ object NetworkModule {
             .connectTimeout(15, TimeUnit.SECONDS)
             .build()
     }
-
     @Provides
     @Singleton
     fun provideRetrofitService(okHttpClient: OkHttpClient): RetrofitAPI {
-
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)

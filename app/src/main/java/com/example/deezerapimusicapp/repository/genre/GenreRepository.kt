@@ -7,9 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface GenreRepository {
-
-    suspend fun getGenre() : Flow<Resource<GenreModel>>
-
-
-
+    suspend fun getGenre(): Flow<Resource<GenreModel>>
 }

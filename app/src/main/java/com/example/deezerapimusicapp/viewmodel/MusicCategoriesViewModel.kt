@@ -13,25 +13,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MusicCategoriesViewModel @Inject constructor(
-    private val repository : GenreRepository,
-    application: Application
-) : BaseViewModel(application){
-
+    private val repository: GenreRepository, application: Application
+) : BaseViewModel(application) {
     private val _genreState = MutableStateFlow(GenreViewState())
-
-    val genreState : StateFlow<GenreViewState> = _genreState.asStateFlow()
-
-    suspend fun getGenre(){
-        repository.getGenre().collect{result->
-            when(result){
-                is Resource.Success ->{
-
+    val genreState: StateFlow<GenreViewState> = _genreState.asStateFlow()
+    suspend fun getGenre() {
+        repository.getGenre().collect { result ->
+            when (result) {
+                is Resource.Success -> {
                     _genreState.value = result.data?.let {
-                        GenreViewState(isSuccess = true,isLoading = false, genreList = it,"")
+                        GenreViewState(isSuccess = true, isLoading = false, genreList = it, "")
                     }!!
-
                 }
-                is Resource.Loading ->{
+                is Resource.Loading -> {
                     _genreState.update {
                         it.copy(
                             isLoading = true
@@ -48,6 +42,4 @@ class MusicCategoriesViewModel @Inject constructor(
             }
         }
     }
-
-
 }

@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class AlbumRepositoryImpl @Inject constructor(
     private val retrofitAPI: RetrofitAPI
-) : BaseRepository(), AlbumRepository{
+) : BaseRepository(), AlbumRepository {
     override suspend fun getAlbums(getArtistId: String): Flow<Resource<AlbumsModel>> {
         return getResult {
             retrofitAPI.getAlbums(getArtistId)

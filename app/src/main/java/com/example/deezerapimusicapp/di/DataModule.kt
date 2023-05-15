@@ -19,27 +19,22 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
-
     @Provides
     fun providesApiGenreRepository(retrofitAPI: RetrofitAPI): GenreRepository {
         return GenreRepositoryImpl(retrofitAPI)
     }
-    // providesApiRemoteDataSource
     @Provides
     fun providesApiArtistRepository(retrofitAPI: RetrofitAPI) : ArtistRepository{
         return ArtistRepositoryImpl(retrofitAPI)
     }
-
     @Provides
     fun providesApiArtistDetailRepository(retrofitAPI: RetrofitAPI) : ArtistDetailRepository{
         return ArtistDetailRepositoryImpl(retrofitAPI)
     }
-
     @Provides
     fun providesApiAlbumRepository(retrofitAPI: RetrofitAPI) : AlbumRepository{
         return AlbumRepositoryImpl(retrofitAPI)
     }
-
     @Provides
     fun providesApiAlbumDetailRepository(retrofitAPI: RetrofitAPI) : AlbumDetailRepository{
         return AlbumDetailRepositoryImpl(retrofitAPI)
