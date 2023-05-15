@@ -1,62 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_weight="20"
-    >
+    android:background="#1ED761"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/favoritesListHeaderTxt"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="Beğeniler"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textSize="20sp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFavoritesList"
-        tools:listitem="@layout/favorites_list_recycler_row"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="18"
-        />
+        android:layout_marginHorizontal="20dp"
+        android:background="#1ED761"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/likeAndMusicLinearLayout"
+        app:layout_constraintTop_toBottomOf="@id/favoritesListHeaderTxt"
+        tools:listitem="@layout/favorites_list_recycler_row" />
 
     <LinearLayout
         android:id="@+id/likeAndMusicLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1"
-        >
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
             android:id="@+id/musicButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:contentDescription="@string/music_button"
-            android:src="@drawable/music_icon"
-            style="@style/Widget.AppCompat.Button.Borderless" />
+            android:src="@drawable/music_icon" />
 
 
         <ImageButton
             android:id="@+id/likeButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:contentDescription="@string/like_button"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:src="@drawable/heart_icon_filled" />
 
 
     </LinearLayout>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

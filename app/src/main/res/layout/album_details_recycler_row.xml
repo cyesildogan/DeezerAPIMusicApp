@@ -1,58 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="75dp"
     android:layout_margin="5dp"
+    app:cardCornerRadius="10dp"
     >
-    <ImageView
-        android:id="@+id/albumDetailsRecyclerViewSongImageView"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:src="@drawable/ic_launcher_background"
-        />
-    <LinearLayout
-        android:id="@+id/clickedForSinging"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="3"
-        android:gravity="center_vertical"
-        >
-
+        android:background="#1ED761">
+        <ImageView
+            android:id="@+id/albumDetailsRecyclerViewSongImageView"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/clickedForSinging"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@id/likeButtonForSaving"
+            app:layout_constraintStart_toEndOf="@id/albumDetailsRecyclerViewSongImageView" />
         <TextView
             android:id="@+id/albumDetailsRecyclerViewSongName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:textSize="20sp"
+            android:layout_margin="10dp"
             android:text="Şarkı Adı"
-            android:textStyle="bold" />
-
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/albumDetailsRecyclerViewSongImageView"
+            app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/albumDetailsRecyclerViewRelease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Süresi"
+            android:textColor="@color/white"
             android:textSize="16sp"
-            android:text="Süresi" />
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
+            app:layout_constraintStart_toEndOf="@id/albumDetailsRecyclerViewSongImageView"
+            app:layout_constraintTop_toBottomOf="@id/albumDetailsRecyclerViewSongName" />
         <Button
             android:id="@+id/likeButtonForSaving"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:drawableTop="@drawable/heart_icon_blank" />
-
-    </LinearLayout>
-
-
-</LinearLayout>
+            android:drawableTop="@drawable/heart_icon_blank"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

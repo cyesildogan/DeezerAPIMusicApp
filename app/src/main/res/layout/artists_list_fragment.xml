@@ -8,17 +8,15 @@
     android:orientation="vertical"
     android:background="#1ED761"
     >
-
     <TextView
         android:id="@+id/categoriesNameTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Kategori Adı"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:gravity="center"
         android:background="#1ED761"
         />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewArtistsList"
         android:layout_width="match_parent"
